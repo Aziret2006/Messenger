@@ -23,6 +23,9 @@ class Message(models.Model):
         auto_now_add=True
     )
     
+    def __str__(self) -> str:
+        return self.content
+    
     
     class Meta:
         ordering = ['created_date']

@@ -7,25 +7,25 @@ from .models import Room, Message
 
 
 @login_required
-def list_rooms(request):
+def rooms(request):
     rooms = Room.objects.all()
     
     return render(
                 request=request, 
-                template_name='room/list.html',
+                template_name='room/rooms.html',
                 context={'rooms': rooms} 
                  )
 
 
 @login_required
-def detail_room(request, slug):
+def room(request, slug):
     room = Room.objects.get(slug=slug)
-    message = Message.objects.filter(room=room)
+    messages = Message.objects.filter(room=room).order_by('created_date')
     
     return render(
                 request=request, 
-                template_name='room/detail.html',
-                context={'room': room, 'message': message} 
+                template_name='room/room.html',
+                context={'room': room, 'messages': messages} 
                  )
 
                 

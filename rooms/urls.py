@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views import list_rooms, detail_room
+from .views import rooms, room
 
 urlpatterns = [
-    path('', list_rooms, name='list-rooms'),
-    path('<slug:slug>/', detail_room, name='detail-room')
+    path('', rooms, name='rooms'),
+    path('<slug:slug>/', room, name='room')
 ]
